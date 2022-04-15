@@ -2,7 +2,7 @@ import com.ya.Account;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import io.qameta.allure.junit4.DisplayName;
+import io.qameta.allure.Story;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -22,23 +22,22 @@ public class NameSizeValidationTest {
         this.expected = expected;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "  Проверяемое имя - {0} | Ожидаемый результат - {1}")
     public static Object[][] getNamesToCheck() {
         return new Object[][] {
                 {"Р", false},                           //1 символ
-                {"PR", false},                          //2 символа
-                {"P e", true},                          //3 символа
-                {"P ed", true},                         //4 символа
-                {"PReddotra ff", true},                 //12 символов
-                {"lififligl hlgfglug", true},           //18 символов
-                {"lififligl hlgfglugl", true},          //19 символов
-                {"lififligl hlgfglugla", false},        //20 символов
-                {"lififligl hlgfgluglasdvbn", false},   //25 символов
+                {"А ", false},                          //2 символа
+                {"а е", true},                          //3 символа
+                {"Я Он", true},                         //4 символа
+                {"Фёдор Иванов", true},                 //12 символов
+                {"Владимир Соколович", true},           //18 символов
+                {"Владимир Сокколович", true},          //19 символов
+                {"Владимир Соколовичус", false},        //20 символов
+                {"Вальдемариус Соколовичус", false},    //24 символа
         };
     }
-
+    @Story("Валидация имени по количеству символов")
     @Test
-    @DisplayName("Валидация количества символов в имени")
     @Description("В данном тесте будет проверено соблюдение условия:\n в строке не меньше 3 и не больше 19 символов")
     public void nameSizeValidationTest() {
         Account account = new Account(name);

@@ -8,7 +8,7 @@ public class Account {
     public Account(String name) {
         this.name = name;
     }
-    @Step("Проверка имени")
+    @Step("Проверка имени |{this.name}|")
     public boolean checkNameToEmboss() {
         String firstChar = String.valueOf(name.charAt(0));
         String lastChar = String.valueOf(name.charAt(name.length() - 1));
