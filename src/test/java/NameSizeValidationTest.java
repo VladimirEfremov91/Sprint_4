@@ -25,6 +25,8 @@ public class NameSizeValidationTest {
     @Parameterized.Parameters(name = "  Проверяемое имя - {0} | Ожидаемый результат - {1}")
     public static Object[][] getNamesToCheck() {
         return new Object[][] {
+                {null, false},                          // пришел null
+                {"", false},                            // пустая строка
                 {"Р", false},                           //1 символ
                 {"А ", false},                          //2 символа
                 {"а е", true},                          //3 символа

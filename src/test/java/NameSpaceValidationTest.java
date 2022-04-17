@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import static org.junit.Assert.assertEquals;
-
 @Epic("Валидация данных банковской карты")
 @Feature("Валидация имени для банковской карты")
 
@@ -38,7 +37,7 @@ public class NameSpaceValidationTest {
     @Story("Валидация имени по наличию и расположению пробелов")
     @Test
     @Description("В данном тесте будет проверено соблюдение условий:\n  - в строке есть только один пробел;\n  - пробел стоит не в начале и не в конце строки.")
-    public void NameSpaceValidationTest() {
+    public void nameSpaceValidationTest() {
         Account account = new Account(name);
         boolean actual = account.checkNameToEmboss();
         assertEquals(expected, actual);
